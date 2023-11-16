@@ -293,7 +293,14 @@ function removeCartItem(e) {
   updateCartIcon();
   updateItemListPanel();
 }
-},{"./items.json":"items.json"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./items.json":"items.json"}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _items = _interopRequireDefault(require("./items.json"));
+var _script = require("./script");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+(0, _script.updateCartIcon)();
+},{"./items.json":"items.json","./script":"script.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -462,5 +469,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","script.js"], null)
-//# sourceMappingURL=/script.75da7f30.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+//# sourceMappingURL=/js-shopping-cart.e31bb0bc.js.map
