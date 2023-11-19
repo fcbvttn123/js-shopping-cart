@@ -110,3 +110,10 @@ function removeCartItem(e) {
     updateItemListPanel()
 }
 
+
+
+
+// New Commit
+
+  // Update itemListPanel variable up 1 level
+

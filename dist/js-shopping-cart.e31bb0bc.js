@@ -293,6 +293,10 @@ function removeCartItem(e) {
   updateCartIcon();
   updateItemListPanel();
 }
+
+// New Commit
+
+// Update itemListPanel variable up 1 level
 },{"./items.json":"items.json"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -325,7 +329,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59865" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55550" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
