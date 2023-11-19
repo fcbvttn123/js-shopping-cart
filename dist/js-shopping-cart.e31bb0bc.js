@@ -181,6 +181,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // HTML Elements
 
+var storeContainer = document.querySelector("[data-store-container]");
+var IMG_URL_BIG = "https://dummyimage.com/420x260";
 var shoppingCartIcon = exports.shoppingCartIcon = document.querySelector(".shopping-cart-icon");
 var itemListPanel = exports.itemListPanel = document.querySelector(".item-list-panel");
 var addToCartBtns = exports.addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
@@ -188,6 +190,23 @@ var addToCartBtns = exports.addToCartBtns = document.querySelectorAll(".add-to-c
 // Shopping Cart Array
 
 var shoppingCart = exports.shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
+
+// Set up store
+
+storeSetup();
+function storeSetup() {
+  _items.default.forEach(function (e) {
+    var temp = document.querySelector("[data-store-container-template]");
+    var clon = temp.content.cloneNode(true);
+    clon.querySelector("[data-item-category]").innerText = e.category;
+    clon.querySelector("[data-item-name]").innerText = e.name;
+    clon.querySelector("[data-item-price]").innerText = "$".concat((e.priceCents / 100).toFixed(2));
+    clon.querySelector("[data-item-img]").src = "".concat(IMG_URL_BIG, "/").concat(e.imageColor, "/").concat(e.imageColor);
+    clon.querySelector("[data-item-id]").dataset.itemId = e.id;
+    clon.querySelector("[data-item-id]").addEventListener("click", addToCart);
+    storeContainer.appendChild(clon);
+  });
+}
 
 // Update shopping cart icon invisibility
 
@@ -208,11 +227,8 @@ shoppingCartIcon.addEventListener("click", function (e) {
   itemListPanel.classList.toggle("invisible");
 });
 
-// Click Event on "Add To Cart" button
+//"Add To Cart" click event
 
-addToCartBtns.forEach(function (btn) {
-  btn.addEventListener("click", addToCart);
-});
 function addToCart(e) {
   var itemId = e.target.dataset.itemId;
   var itemInfo = _items.default.find(function (item) {
@@ -293,10 +309,6 @@ function removeCartItem(e) {
   updateCartIcon();
   updateItemListPanel();
 }
-
-// New Commit
-
-// Update itemListPanel variable up 1 level
 },{"./items.json":"items.json"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -329,7 +341,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55550" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60178" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

@@ -4,6 +4,10 @@ import items from "./items.json";
 
 // HTML Elements
 
+const storeContainer = document.querySelector("[data-store-container]")
+
+const IMG_URL_BIG = "https://dummyimage.com/420x260" 
+
 export const shoppingCartIcon = document.querySelector(".shopping-cart-icon");
 
 export const itemListPanel = document.querySelector(".item-list-panel");
@@ -13,6 +17,24 @@ export const addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
 // Shopping Cart Array
 
 export let shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
+
+// Set up store
+
+storeSetup()
+
+function storeSetup() {
+  items.forEach(e => {
+    let temp = document.querySelector("[data-store-container-template]");
+    let clon = temp.content.cloneNode(true);
+    clon.querySelector("[data-item-category]").innerText = e.category
+    clon.querySelector("[data-item-name]").innerText = e.name
+    clon.querySelector("[data-item-price]").innerText = `$${(e.priceCents / 100).toFixed(2)}`
+    clon.querySelector("[data-item-img]").src = `${IMG_URL_BIG}/${e.imageColor}/${e.imageColor}`
+    clon.querySelector("[data-item-id]").dataset.itemId = e.id
+    clon.querySelector("[data-item-id]").addEventListener("click", addToCart)
+    storeContainer.appendChild(clon)
+  })
+}
 
 // Update shopping cart icon invisibility
 
@@ -34,11 +56,7 @@ shoppingCartIcon.addEventListener("click", (e) => {
   itemListPanel.classList.toggle("invisible");
 });
 
-// Click Event on "Add To Cart" button
-
-addToCartBtns.forEach((btn) => {
-  btn.addEventListener("click", addToCart);
-});
+//"Add To Cart" click event
 
 function addToCart(e) {
   let itemId = e.target.dataset.itemId;
@@ -109,11 +127,4 @@ function removeCartItem(e) {
     updateCartIcon()
     updateItemListPanel()
 }
-
-
-
-
-// New Commit
-
-  // Update itemListPanel variable up 1 level
 
