@@ -1,11 +1,5 @@
-import items from "./items.json";
+import { shoppingCartIcon, itemListPanel } from "./script.js";
 
-import { 
-    updateCartIcon, 
-    shoppingCartIcon,
-    itemListPanel,
-    addToCartBtns,
-    shoppingCart
-} from "./script";
-
-updateCartIcon()
+// shoppingCartIcon.addEventListener("click", (e) => {
+//     itemListPanel.classList.toggle("invisible");
+// });

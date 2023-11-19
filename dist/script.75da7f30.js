@@ -173,8 +173,7 @@ module.exports = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.shoppingCartIcon = exports.shoppingCart = exports.itemListPanel = exports.addToCartBtns = void 0;
-exports.updateCartIcon = updateCartIcon;
+exports.shoppingCartIcon = exports.itemListPanel = void 0;
 var _items = _interopRequireDefault(require("./items.json"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // Items Database
@@ -185,11 +184,10 @@ var storeContainer = document.querySelector("[data-store-container]");
 var IMG_URL_BIG = "https://dummyimage.com/420x260";
 var shoppingCartIcon = exports.shoppingCartIcon = document.querySelector(".shopping-cart-icon");
 var itemListPanel = exports.itemListPanel = document.querySelector(".item-list-panel");
-var addToCartBtns = exports.addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
 
 // Shopping Cart Array
 
-var shoppingCart = exports.shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
+var shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
 
 // Set up store
 
@@ -293,7 +291,7 @@ function removeCartItem(e) {
       return e.id == removedId && --e.amount;
     });
   } else {
-    exports.shoppingCart = shoppingCart = shoppingCart.filter(function (e) {
+    shoppingCart = shoppingCart.filter(function (e) {
       return e.id != removedId;
     });
   }
@@ -334,7 +332,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60178" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61410" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

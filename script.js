@@ -12,11 +12,9 @@ export const shoppingCartIcon = document.querySelector(".shopping-cart-icon");
 
 export const itemListPanel = document.querySelector(".item-list-panel");
 
-export const addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
-
 // Shopping Cart Array
 
-export let shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
+let shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
 
 // Set up store
 
@@ -40,7 +38,7 @@ function storeSetup() {
 
 updateCartIcon()
 
-export function updateCartIcon() {
+function updateCartIcon() {
     if (!shoppingCart.length) {
         shoppingCartIcon.classList.add("invisible")
     } else {
