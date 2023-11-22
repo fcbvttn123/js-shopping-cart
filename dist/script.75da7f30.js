@@ -173,7 +173,8 @@ module.exports = [{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.shoppingCartIcon = exports.itemListPanel = void 0;
+exports.shoppingCartIcon = exports.shoppingCart = exports.itemListPanel = void 0;
+exports.updateCartIcon = updateCartIcon;
 var _items = _interopRequireDefault(require("./items.json"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // Items Database
@@ -187,11 +188,11 @@ var itemListPanel = exports.itemListPanel = document.querySelector(".item-list-p
 
 // Shopping Cart Array
 
-var shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
+var shoppingCart = exports.shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
 
 // Set up store
 
-storeSetup();
+storeContainer && storeSetup();
 function storeSetup() {
   _items.default.forEach(function (e) {
     var temp = document.querySelector("[data-store-container-template]");
@@ -208,7 +209,7 @@ function storeSetup() {
 
 // Update shopping cart icon invisibility
 
-updateCartIcon();
+shoppingCartIcon && updateCartIcon();
 function updateCartIcon() {
   if (!shoppingCart.length) {
     shoppingCartIcon.classList.add("invisible");
@@ -221,7 +222,7 @@ function updateCartIcon() {
 
 // Click Event on "Shopping Cart Icon" to open "Item List Panel"
 
-shoppingCartIcon.addEventListener("click", function (e) {
+shoppingCartIcon && shoppingCartIcon.addEventListener("click", function (e) {
   itemListPanel.classList.toggle("invisible");
 });
 
@@ -258,7 +259,7 @@ function addToCart(e) {
 
 // Update item list panel
 
-updateItemListPanel();
+itemListPanel && updateItemListPanel();
 function updateItemListPanel() {
   itemListPanel.querySelector(".item-container").innerHTML = "";
   var totalPrice = 0;
@@ -291,7 +292,7 @@ function removeCartItem(e) {
       return e.id == removedId && --e.amount;
     });
   } else {
-    shoppingCart = shoppingCart.filter(function (e) {
+    exports.shoppingCart = shoppingCart = shoppingCart.filter(function (e) {
       return e.id != removedId;
     });
   }
@@ -332,7 +333,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61410" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53858" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

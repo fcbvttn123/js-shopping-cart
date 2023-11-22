@@ -14,11 +14,11 @@ export const itemListPanel = document.querySelector(".item-list-panel");
 
 // Shopping Cart Array
 
-let shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
+export let shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
 
 // Set up store
 
-storeSetup()
+storeContainer && storeSetup() 
 
 function storeSetup() {
   items.forEach(e => {
@@ -36,9 +36,9 @@ function storeSetup() {
 
 // Update shopping cart icon invisibility
 
-updateCartIcon()
+shoppingCartIcon && updateCartIcon()
 
-function updateCartIcon() {
+export function updateCartIcon() {
     if (!shoppingCart.length) {
         shoppingCartIcon.classList.add("invisible")
     } else {
@@ -50,6 +50,7 @@ function updateCartIcon() {
 
 // Click Event on "Shopping Cart Icon" to open "Item List Panel"
 
+shoppingCartIcon && 
 shoppingCartIcon.addEventListener("click", (e) => {
   itemListPanel.classList.toggle("invisible");
 });
@@ -83,6 +84,7 @@ function addToCart(e) {
 
 // Update item list panel
 
+itemListPanel && 
 updateItemListPanel()
 
 function updateItemListPanel() {
